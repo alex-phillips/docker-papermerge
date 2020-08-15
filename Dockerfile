@@ -43,8 +43,8 @@ RUN \
  echo "**** install papermerge ****" && \
  mkdir -p /app/papermerge && \
  if [ -z ${PAPERMERGE_RELEASE+x} ]; then \
-	PAPERMERGE_RELEASE=$(curl -sX GET "https://api.github.com/repos/ciur/papermerge/commits/master" \
-	| awk '/sha/{print $4;exit}' FS='[""]'); \
+	PAPERMERGE_RELEASE=$(curl -sX GET "https://api.github.com/repos/ciur/papermerge/releases/latest" \
+	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
  curl -o \
  	/tmp/papermerge.tar.gz -L \
